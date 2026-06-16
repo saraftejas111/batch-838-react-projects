@@ -3,6 +3,8 @@ import './App.css'
 import StudentForm from './StudentForm'
 
 const App = () => {
+
+
   return (
     <div>
       
@@ -11,7 +13,11 @@ const App = () => {
           Welcome to My Event App
         </h1>
 
+
         <StudentForm/>
+
+
+
       </center>
     </div>
   )

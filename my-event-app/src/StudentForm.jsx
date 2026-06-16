@@ -6,8 +6,10 @@ const StudentForm = () => {
     // const [name , setName] = useState("")
     // const [marks , setMarks] = useState("")
 
-    const [std, setStd] = useState({ stdroll: '', stdname: '', math: '', sci: '', eng: '' })
+    const [std, setStd] = useState({ stdroll: '', stdname: '', math: '', sci: '', eng: '', total: '' })
     const [total, setTotal] = useState(null)
+
+    let [allstd, setAllstd] = useState([])
 
     const handleChange = (e) => {
 
@@ -26,16 +28,15 @@ const StudentForm = () => {
 
         const tt = Number(std.math) + Number(std.sci) + Number(std.eng);
 
-        setTotal(tt)
+      //  const newStd = {...std , total : tt}
 
-
-
+        setAllstd([...allstd , {...std , total : tt}])
+       
+        console.log(allstd)
     }
 
     const handleReset = () => {
         setStd({ stdroll: '', stdname: '', math: '', sci: '', eng: '' })
-
-        setTotal(null)
 
     }
     return (
@@ -56,29 +57,55 @@ const StudentForm = () => {
 
             </form>
 
-            {
-                total &&
-                <div>
-                    <h2>
-                        ROll : {std.stdroll}
-                    </h2>
-                    <h2>
-                        NAME : {std.stdname}
-                    </h2>
-                    <h2>
-                        MATH : {std.math}
-                    </h2>
-                    <h2>
-                        SCI : {std.sci}
-                    </h2>
-                    <h2>
-                        ENG : {std.eng}
-                    </h2>
-                    <h2>
-                        TOTAL : {total}
-                    </h2>
-                </div>
-            }
+            <br />
+
+            <h2>All Students</h2>
+            <div>
+
+                <table border='2'>
+
+                    <thead>
+                        <tr>
+                            <th>
+                                Roll no
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Math
+                            </th>
+                            <th>
+                                Science
+                            </th>
+                            <th>
+                                English
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            allstd.map((s) => (
+                                
+                                <tr key={s.stdroll}>
+
+                                    <td>{s.stdroll}</td>
+                                    <td>{s.stdname}</td>
+                                    <td>{s.math}</td>
+                                    <td>{s.sci}</td>
+                                    <td>{s.eng}</td>
+                                    <td>{s.total}</td>
+
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     )
 }
