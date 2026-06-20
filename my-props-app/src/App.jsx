@@ -8,6 +8,9 @@ import Greet from './components/Greet'
 import Aa from './components/Aa'
 import Xx from './components/Xx'
 import Yy from './components/Yy'
+import EnquiryForm from './components/EnquiryForm'
+import EnquiryRecieved from './components/EnquiryRecieved'
+import Login from './components/Login'
 
 
 const App = () => {
@@ -19,6 +22,8 @@ const App = () => {
 
   let [jj , setJj] = useState("")
 
+  const [data , setData ] = useState([])
+
   const recieveName = (msg) =>{
     console.log(msg)
   }
@@ -26,6 +31,27 @@ const App = () => {
   const recieveFromY = (vv) => {
           setJj(vv)
   }
+
+  const recieveData = (dt) =>{
+
+    console.log(dt)
+    setData([...data , dt])
+  } 
+
+
+  
+
+const recieveDeleteId = (id) => {
+
+  console.log("del id in App.jsx = ", id);
+
+  const updatedList = data.filter((item) => item.id !== id);
+
+  setData(updatedList);
+}
+          
+  
+
   return (
     <div>
       <center>
@@ -33,7 +59,14 @@ const App = () => {
           Welcome to my Props App
         </h1>
 
-        <Xx dd={jj}/>
+        <Login/>
+
+        <EnquiryForm sendData={recieveData}/>
+
+        <EnquiryRecieved enquiryList={data} deleteId={recieveDeleteId}/>
+
+
+        {/* <Xx dd={jj}/>
 
         <Yy sendToApp={recieveFromY}/>
 
@@ -46,13 +79,7 @@ const App = () => {
           num2 = <input type="text" onChange={(e)=>setNum2(Number (e.target.value))}/>
          </h2>
 
-         <form>
-          id  : <input type="text" /> <br /><br />
-          name  : <input type="text" /> <br /><br />
-          salary  : <input type="text" /> <br /><br />
-
-          <button>Add Employee</button>
-         </form>
+        
 
       ---------------------------------------------------------------------------------
 
@@ -64,7 +91,7 @@ const App = () => {
 
         <SendData sendName={recieveName}/>
 
-        <Aa msg={"hello"}/>
+        <Aa msg={"hello"}/> */}
 
       
       </center>
