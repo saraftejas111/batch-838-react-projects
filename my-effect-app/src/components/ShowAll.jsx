@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteById, showAllEmployees } from '../services'
 
-const ShowAll = () => {
+const ShowAll = ({empAdded , updateEmp}) => {
 
     const [allemployees, setAllemployees] = useState([])
     const [refresh , setRefresh] = useState(0)
@@ -12,15 +12,20 @@ const ShowAll = () => {
 
         setAllemployees(showAllEmployees())
 
-        console.log("loading 5000... employees ")
     }
 
-    useEffect(loadEmployees, [refresh])
+    useEffect(loadEmployees, [refresh , empAdded])
 
     const handleDelete = (id) => {
         deleteById(id);
         setRefresh(refresh+1)
         console.log("after delete : " , id , showAllEmployees())
+    }
+
+    const handleUpdate = (emp) => {
+
+        updateEmp(emp) ; 
+            
     }
 
 
@@ -49,6 +54,11 @@ const ShowAll = () => {
                                 <td>
                                     <button onClick={() => handleDelete(eq.id)}>
                                         Delete
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onClick={() => handleUpdate(eq)}>
+                                        Update
                                     </button>
                                 </td>
 

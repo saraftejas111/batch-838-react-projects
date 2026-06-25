@@ -34,3 +34,19 @@ export const deleteById = (id) => {
   const newList = employees.filter((emp) => emp.id !== id);
   employees = newList;
 };
+
+export const addEmployee = (emp) => {
+  employees = [...employees, emp];
+
+  console.log(employees);
+};
+
+export const updateEmployee = (emp) => {
+  employees = employees.map((ee) => {
+    if (ee.id === emp.id) {
+      return emp;
+    }
+    return ee;
+  });
+
+};
