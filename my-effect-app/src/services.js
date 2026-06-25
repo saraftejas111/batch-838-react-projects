@@ -42,11 +42,14 @@ export const addEmployee = (emp) => {
 };
 
 export const updateEmployee = (emp) => {
-  employees = employees.map((ee) => {
-    if (ee.id === emp.id) {
-      return emp;
-    }
-    return ee;
-  });
+  // employees = employees.map((ee) => {
+  //   if (ee.id === emp.id) {
+  //     return emp;
+  //   }
+  //   return ee;
+  // });
+
+   const newList = employees.filter((ee) => ee.id !== emp.id);
+  employees = [...newList, emp];
 
 };
