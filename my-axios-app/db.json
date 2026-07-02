@@ -1,0 +1,26 @@
+{
+  "employees": [
+    {
+      "empId": 101,
+      "empName": "Rahul Sharma",
+      "empRole": "React Developer",
+      "empSalary": 65000,
+      "id": "xiWJyEoUX94"
+    },
+    {
+      "empId": "111",
+      "empName": "qqQ",
+      "empRole": "qq",
+      "empSalary": "444444",
+      "id": "Y_qNyzN_Bg4"
+    },
+    {
+      "empId": "444",
+      "empName": "rrr",
+      "empRole": "rrr",
+      "empSalary": "rrr",
+      "id": "xddaWu9w5-4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
