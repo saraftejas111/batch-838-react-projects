@@ -1,12 +1,14 @@
 import axios from "axios";
 
-export const fetchAllEmployees = () => axios.get(`http://localhost:3000/employees`) ; 
+const BASE_URL = "http://localhost:8080"
 
-export const addEmployee = (emp) => axios.post(`http://localhost:3000/employees` , emp) ; 
+export const fetchAllEmployees = () => axios.get(`${BASE_URL}/employees`) ; 
 
-export const deleteEmployee = (id) => axios.delete(`http://localhost:3000/employees/${id}`) ; 
+export const addEmployee = (emp) => axios.post(`${BASE_URL}/employees` , emp) ; 
 
-export const updateEmployee = (id , emp) => axios.put(`http://localhost:3000/employees/${id}` , emp) ; 
+export const deleteEmployee = (id) => axios.delete(`${BASE_URL}/employees/${id}`) ; 
+
+export const updateEmployee = (id , emp) => axios.put(`${BASE_URL}/employees/${id}` , emp) ; 
 
 
 
